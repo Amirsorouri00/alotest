@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Basket;
 use App\Invoice;
 use App\User;
+use App\Order;
 
 class CustomerController extends Controller
 {
@@ -175,6 +176,8 @@ class CustomerController extends Controller
                 
                 if ($result->status == 100) {
                     $invoice->update(array('authority' => $result.Authority, 'status' => 'payed') );
+                    $order = Order::create(array("status" => "unresolved", "invoice_id" => $invoice->id, "store_id" => $store_id) );
+                    
                     return Response(['auth'=> $result.Authority], 200);
                 }
                 else {
