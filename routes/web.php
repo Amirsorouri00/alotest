@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/roles', 'PermissionController@Permission');
+
+Route::group(['middleware' => 'role:developer'], function() {
+
+    Route::get('/admin', function() {
+       return 'Welcome Admin';
+    });
+ 
+ });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
