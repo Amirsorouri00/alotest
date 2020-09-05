@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 class PermissionController extends Controller
 {   
 	/**
-	 * @Input
-	 * @Output
 	 * A CRUD Service to test the Role-Permission core functionalities
+	 * 
+	 * @param
+	 * @return
 	 */
     public function Permission()
     {   
