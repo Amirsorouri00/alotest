@@ -18,8 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
@@ -41,7 +39,7 @@ Route::group([
         Route::post('list-products', 'CustomerController@list_product');
         Route::post('addto-basket', 'CustomerController@add_to_basket');
         Route::post('rmfrm-basket', 'CustomerController@remove_from_baskeat');
+        Route::post('basket-receipt', 'CustomerController@generate_receipt');
         Route::post('buy', 'CustomerController@buy');
-
     });
 });

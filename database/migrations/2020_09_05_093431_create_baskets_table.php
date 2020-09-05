@@ -16,6 +16,10 @@ class CreateBasketsTable extends Migration
         Schema::create('baskets', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('status', ['active', 'deactive', 'bought']);  
+            $table->unsignedInteger('user_id');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
