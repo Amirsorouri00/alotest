@@ -10,7 +10,6 @@ use App\Order;
 
 class CustomerController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -154,13 +153,13 @@ class CustomerController extends Controller
      */
     public function buy($request) {
 
-        $MERCHANT = '9f35b4e2-4022-11e9-ad5c-000c295eb8fc';
+        $MERCHANT = '9f21b4e2-8564-11e9-ad5c-789h295eb8fc';
         $client = Client('https://www.zarinpal.com/pg/services/WebGate/wsdl');
         # amount = 1000  # Toman / Required
         $description = "پرداخت رسید سبد خرید کاربر.";  # Required
         # email = 'amirsorouri26@gmail.com'  # Optional
         # mobile = '09128048897'  # Optional
-        $CallbackURL = 'http://neolej.ir/api/payment/verify_redirect/'; # Important: need to edit for realy server.
+        $CallbackURL = 'http://alotest.ir/api/payment/verify_redirect/'; 
 
         $user = $request->user()->id;
         if (!$user->hasRole('customer')) {

@@ -75,5 +75,4 @@ class SellerController extends Controller
         $order->update(array('status' => 'resolved') );
         return Response(['orders' => $orders], 200);
     }
-
 }
