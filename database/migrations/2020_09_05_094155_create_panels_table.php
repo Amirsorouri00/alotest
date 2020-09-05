@@ -19,7 +19,7 @@ class CreatePanelsTable extends Migration
 
             //FOREIGN KEY CONSTRAINTS
             $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
-            
+            $table->text("Logo"); // Logo location and name in the storage system.
             $table->timestamps();
 
             $table->primary(['id']);

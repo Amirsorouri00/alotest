@@ -56,8 +56,8 @@ class CustomerController extends Controller
     public function list_product($request)
     {
         $user = $request->user()->id;
-        if ($user->hasRole('customer')) {
-            return response(['data' => 'this json must return the customer-specific dashboard data.'], 403);
+        if (!$user->hasRole('customer')) {
+            return response(['data' => 'role doesn\'t match'], 403);
         }
         else {
             $lat = $request->input('latitude');
@@ -95,8 +95,8 @@ class CustomerController extends Controller
     public function add_to_basket($request)
     {
         $user = $request->user()->id;
-        if ($user->hasRole('customer')) {
-            return response(['data' => 'this json must return the customer-specific dashboard data.'], 403);
+        if (!$user->hasRole('customer')) {
+            return response(['data' => 'role doesn\'t match.'], 403);
         }
         else {
             $productId = $request->input('product_id');
@@ -121,8 +121,8 @@ class CustomerController extends Controller
      */
     public function generate_receipt($request) {
         $user = $request->user()->id;
-        if ($user->hasRole('customer')) {
-            return response(['data' => 'this json must return the customer-specific dashboard data.'], 403);
+        if (!$user->hasRole('customer')) {
+            return response(['data' => 'role doesn\'t match.'], 403);
         }
         else {
             $productId = $request->input('product_id');
@@ -163,8 +163,8 @@ class CustomerController extends Controller
         $CallbackURL = 'http://neolej.ir/api/payment/verify_redirect/'; # Important: need to edit for realy server.
 
         $user = $request->user()->id;
-        if ($user->hasRole('customer')) {
-            return response(['data' => 'this json must return the customer-specific dashboard data.'], 403);
+        if (!$user->hasRole('customer')) {
+            return response(['data' => 'role doesn\'t match'], 403);
         }
         else {
             $invoiceId = $requst->input('invoice');

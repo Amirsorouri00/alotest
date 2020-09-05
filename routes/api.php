@@ -24,14 +24,14 @@ Route::group([
 ], function ($router) {
     Route::prefix('admin')->group(function () {
         Route::prefix('controll')->group(function () {
-            Route::post('create-panel', 'AdminController@create_panel');
             Route::post('add-seller', 'AdminController@add_seller');
         });
     });
 
     Route::prefix('seller')->group(function () {
-        Route::post('add-stuff', 'SellerController@add_stuff');
-        Route::post('report', 'SellerController@report');
+        Route::post('add-product', 'SellerController@add_product');
+        Route::post('report-orders', 'SellerController@report_orders');
+        Route::post('resolve-order', 'SellerController@resolve_order');
     });
 
     Route::prefix('customer')->group(function () {
